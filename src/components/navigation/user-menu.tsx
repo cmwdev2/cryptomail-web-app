@@ -83,7 +83,8 @@ function UserMenu(props: UserMenuProps) {
 
     return (
         <Menu fixed='top' stackable fluid={true} primary="true" style={{opacity: '80%'}}>
-                <MenuItem link header as='a' href="./"><Icon name="users" size="large"/>CMAIL
+                <MenuItem link header as='a' href="./">
+                    <img style={{width:'3em'}} src='/cmail_logo_black_trans.svg'/>
                 </MenuItem>
             <Popup header='Compose a new message' content='Get 100 cmail tokens for this action.' trigger={
                 <MenuItem>

@@ -21,7 +21,9 @@ function GuestMenu() {
 
     return (
         <Menu fixed='top' stackable primary="true" style={{opacity: '80%'}}>
-                <MenuItem as='a' href="/" header><Icon name="users" size="large"/>CMAIL</MenuItem>
+                <MenuItem as='a' href="/" header>
+                    <img style={{width:'3em'}} src='/cmail_logo_black_trans.svg'/>
+                </MenuItem>
                 <Popup content='Browse the public cmail users directory' trigger={
                     <MenuItem as={Link} to='/users' name='users' style={{color:'blue'}} content="Who's here?"/>
                 } />

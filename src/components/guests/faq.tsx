@@ -263,9 +263,9 @@ const alphaFaqPanels = [
                 <div>
                     <p>Some components of cmail alpha are open source software:</p>
                     <ul>
-                        <li>Cmail alpha web application is open source and is available here.</li>
-                        <li>Cmail alpha api is open source and is available here.</li>
-                        <li>Cmail alpha smart contracts are open source and are available here.</li>
+                        <li>Cmail alpha web application is open source and is <a rel='noreferrer' target='_blank' href='https://github.com/cmwdev2/cryptomail-web-app'>available here</a>.</li>
+                        <li>Cmail alpha api is open source and will be available soon.</li>
+                        <li>Cmail alpha smart contracts are open source will be available soon.</li>
                     </ul>
                     <p>Cmail alpha server software is not open source yet but may become open source in the future.</p>
                     <p>Note that cmail open source software is not free software because it is only available for non-commercial use such as educational and security audits and not for commercial use.</p>

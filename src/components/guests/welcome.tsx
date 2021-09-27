@@ -199,7 +199,7 @@ function WelcomePage(props: WelcomePageProps) {
                 <Segment vertical>
                     <Grid container stackable textAlign="center" columns={3}>
                         <GridColumn>
-                            <Image centered circular size='small' src='admin_profile_large.jpg'/>
+                            <Image centered circular size='small' src='cmail_alpha_logo.png'/>
                             <Header as="h1">Cmail Alpha is Here</Header>
                             <p>
                                 Link to main alpha product page...
@@ -207,7 +207,7 @@ function WelcomePage(props: WelcomePageProps) {
                             <Button basic onClick={(_) => window.location.href='/signup'}>Sign Up &raquo;</Button>
                         </GridColumn>
                         <GridColumn>
-                            <Image centered circular size="small" src="admin_profile_large.jpg"/>
+                            <Image centered circular size="small" src="in_depth_promo.png"/>
                             <Header as="h1">Cmail in Depth</Header>
                             <p>
                                 Read our FAQ to learn all about....
@@ -219,7 +219,7 @@ function WelcomePage(props: WelcomePageProps) {
                                 centered
                                 circular
                                 size="small"
-                                src="admin_profile_large.jpg"
+                                src="community.png"
                             />
                             <Header as="h1">Get Involved</Header>
                             <p>

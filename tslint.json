@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "no-unexpected-multiline" : true
+  },
+  "linterOptions": {
+    "exclude": [
+      "src/proto/*"
+    ]
+  }
+}

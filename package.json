@@ -1,0 +1,86 @@
+{
+  "name": "cryptomail-webapp",
+  "version": "0.1.0",
+  "author": "cmdev2@protonmail.com",
+  "private": true,
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
+    "serve": "craco build && serve -s build"
+  },
+  "dependencies": {
+    "@craco/craco": "^6.2.0",
+    "@improbable-eng/grpc-web": "^0.14.0",
+    "@metamask/detect-provider": "^1.2.0",
+    "@metamask/providers": "^8.1.1",
+    "@polkadot/util": "^7.1.1",
+    "@polkadot/util-crypto": "^7.1.1",
+    "@polkadot/wasm-crypto": "^4.1.2",
+    "@polkadot/x-randomvalues": "^7.1.1",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@subnetter/subnet-wasm": "^0.1.2",
+    "@uiw/react-md-editor": "^3.4.14",
+    "aes-js": "^3.1.2",
+    "bip39": "^3.0.4",
+    "dompurify": "^2.3.1",
+    "ethers": "^5.4.2",
+    "google-protobuf": "^3.17.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-slick": "^0.28.1",
+    "redux-logger": "^3.0.6",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "slick-carousel": "^1.8.1",
+    "wasm-dce": "^1.0.2",
+    "wasm-loader": "^1.3.0",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/aes-js": "^3.1.1",
+    "@types/dompurify": "^2.2.3",
+    "@types/google-protobuf": "^3.15.5",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.10",
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/react-slick": "^0.23.5",
+    "@types/slick-carousel": "^1.6.37",
+    "@types/text-encoding": "^0.0.36",
+    "craco-esbuild": "^0.3.4",
+    "react-scripts": "4.0.3",
+    "ts-protoc-gen": "^0.15.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

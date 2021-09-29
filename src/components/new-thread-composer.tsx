@@ -319,7 +319,7 @@ function NewThreadComposer(props: NewThreadComposerProps) {
         return res + "."
     }
 
-    async function onWithdrawPaymentClicked(action: PaidActionTypeMap[keyof PaidActionTypeMap]) {
+    async function onMakePaymentClicked(action: PaidActionTypeMap[keyof PaidActionTypeMap]) {
         try {
             const state = getRootState()
             if (typeof window.ethereum === 'undefined') {
@@ -388,6 +388,7 @@ function NewThreadComposer(props: NewThreadComposerProps) {
                 setTransactionHash(resp.hash)
                 setTransactionValue(resp.value) // user may have paid above price!
 
+                /* this is too slow to block the ui so it is commented out - the server checks the deposit before displaying message in receiver's inboc
                 const receipt: TransactionReceipt = await resp.wait(1)
                 console.log("receipt: " + receipt.transactionHash)
                 setTransactionStatus(EthTransactionStatus.confirmed)
@@ -397,6 +398,7 @@ function NewThreadComposer(props: NewThreadComposerProps) {
                 console.log("Depositor: " + deposit.depositor)
                 console.log("Recipient: " + deposit.recipient)
                 console.log("Amount: " + deposit.amount.toString())
+                 */
 
             } catch (err : any) {
                 if (err.code === 4001) {
@@ -594,7 +596,7 @@ function NewThreadComposer(props: NewThreadComposerProps) {
                         <Popup header='Pay Open Price' content={getPayToOpenPopupText()} trigger={
                             <Button as='div' labelPosition='right'>
                                 <Button color='green'
-                                        onClick={(_) => onWithdrawPaymentClicked(PaidActionType.PAID_ACTION_TYPE_OPEN)}>
+                                        onClick={(_) => onMakePaymentClicked(PaidActionType.PAID_ACTION_TYPE_OPEN)}>
                                     Pay Open Price
                                 </Button>
                                 <Label basic color='green' pointing='left'>
@@ -608,7 +610,7 @@ function NewThreadComposer(props: NewThreadComposerProps) {
                             <Popup header='Pay Reply Price' content={getPayToReplyPopupText()} trigger={
                                 <Button style={{marginLeft: '20px'}} as='div' labelPosition='right'>
                                     <Button color='orange'
-                                            onClick={(_) => onWithdrawPaymentClicked(PaidActionType.PAID_ACTION_TYPE_REPLY)}>
+                                            onClick={(_) => onMakePaymentClicked(PaidActionType.PAID_ACTION_TYPE_REPLY)}>
                                         Pay Reply Price
                                     </Button>
                                     <Label basic color='orange' pointing='left'>

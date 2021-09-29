@@ -140,6 +140,14 @@ p code {
     font-size: 3rem;
 }
 
+@media only screen and (max-width: 767px) {
+    .slide .ui.segment h1 {
+        font-size: 2rem;
+    }
+}
+
 .slide .ui.segment p {
     font-size: 1.5rem;
 }
+
+

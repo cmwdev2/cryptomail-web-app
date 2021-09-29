@@ -176,6 +176,9 @@ export const restoreAccount = createAsyncThunk(
             pub_key.setKey(public_key_data)
             account_info.setPublicKey(pub_key)
 
+            console.log("Account private key: " + u8aToHex(private_key_data))
+            console.log("Account public key: " + u8aToHex(public_key_data))
+
             const subnet_wasm = await import("@subnetter/subnet-wasm")
 
             // account x25519 first prekey
@@ -183,8 +186,8 @@ export const restoreAccount = createAsyncThunk(
             const entropy_bytes1: Uint8Array = CryptoUtils.hexToU8NoPrefix(entropy1)
             const pre_key_private = subnet_wasm.x22519_static_secret_from_bytes(entropy_bytes1)
             const pre_key_public = subnet_wasm.x25519_create_public_key(pre_key_private)
-            console.log("pre_key_private: " + u8aToHex(pre_key_private))
-            console.log("pre_key_public: " + u8aToHex(pre_key_public))
+            console.log("pre-key private: " + u8aToHex(pre_key_private))
+            console.log("pre- key public: " + u8aToHex(pre_key_public))
 
             const pre_key_pair = new Keypair()
             pre_key_pair.setPrivateKey(pre_key_private)

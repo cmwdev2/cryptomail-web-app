@@ -202,7 +202,7 @@ function WelcomePage(props: WelcomePageProps) {
                             <Image centered circular size='small' src='cmail_alpha_logo.png'/>
                             <Header as="h1">Cmail Alpha is Here</Header>
                             <p>
-                                Link to main alpha product page...
+                                Cmail alpha is available for free. Please use Chrome, Firefox or Brave web browsers with the metamask browser extension on a desktop or laptop computer.
                             </p>
                             <Button basic onClick={(_) => window.location.href='/signup'}>Sign Up &raquo;</Button>
                         </GridColumn>

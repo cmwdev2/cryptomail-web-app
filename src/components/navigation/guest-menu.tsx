@@ -24,6 +24,20 @@ function GuestMenu() {
         return ethChainId !== productEthChainId
     }
 
+    function isMobile() : boolean {
+        return window.innerWidth <= 767
+    }
+
+    if (isMobile()) {
+        return (
+            <Menu fixed='top' stackable primary="true" style={{opacity: '80%'}}>
+                <MenuItem as='a' href="/" header>
+                    <img style={{width:'3em'}} src='/cmail_logo_black_trans.svg'/>
+                </MenuItem>
+            </Menu>
+                )
+    }
+
     return (
         <Menu fixed='top' stackable primary="true" style={{opacity: '80%'}}>
                 <MenuItem as='a' href="/" header>

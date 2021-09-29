@@ -13,7 +13,7 @@ import {ethers, utils} from "ethers"
 import {useAppDispatch, useAppSelector} from '../../app/hooks'
 import {base64} from "ethers/lib/utils"
 import {etherScanTransactionUrl, format_eth_address, timeAgo} from '../../common/time'
-import getNetConfig, {EthTransactionStatus} from "../../features/ethereum/config"
+import getNetConfig, {EthTransactionStatus, productEthChainId} from '../../features/ethereum/config'
 import {getRootState} from "../../app/store"
 import detectEthereumProvider from "@metamask/detect-provider"
 import cmailAbiJson from "../../features/ethereum/crypto_mail_abi.json"
@@ -191,7 +191,7 @@ function MessageCard(props: MessageCardProps) {
         async function verifyDeposit(expected_amount: BigInt) {
             const provider = new ethers.providers.Web3Provider(window.ethereum as any)
             const chainId = state.ethereum.chainId
-            const net_config = getNetConfig(chainId)
+            const net_config = getNetConfig(productEthChainId)
 
             console.log("cmail contract address: " + net_config.contractAddress)
             console.log("chain id: " + chainId)
@@ -278,7 +278,7 @@ function MessageCard(props: MessageCardProps) {
             const provider = new ethers.providers.Web3Provider(window.ethereum as any)
             const chainId = state.ethereum.chainId
             const signer = provider.getSigner()
-            const net_config = getNetConfig(chainId)
+            const net_config = getNetConfig(productEthChainId)
 
             console.log("cmail contract address: " + net_config.contractAddress)
             console.log("chain id: " + chainId)
@@ -345,7 +345,7 @@ function MessageCard(props: MessageCardProps) {
             const provider = new ethers.providers.Web3Provider(window.ethereum as any)
             const chainId = state.ethereum.chainId
             const signer = provider.getSigner()
-            const net_config = getNetConfig(chainId)
+            const net_config = getNetConfig(productEthChainId)
 
             console.log("cmail contract address: " + net_config.contractAddress)
             console.log("chain id: " + chainId)

@@ -31,7 +31,7 @@ import {etherScanTransactionUrl, format_eth_address} from '../common/time'
 import MDEditor from '@uiw/react-md-editor'
 import detectEthereumProvider from '@metamask/detect-provider'
 import cmailAbiJson from '../features/ethereum/crypto_mail_abi.json'
-import getNetConfig, {EthTransactionStatus} from '../features/ethereum/config'
+import getNetConfig, {EthTransactionStatus, productEthChainId} from '../features/ethereum/config'
 import {getRootState} from '../app/store'
 import CryptoUtils from '../features/crypo/crypto'
 import {ContentItem, MessageContent as ApiMessageContent} from '../proto/types/content_pb'
@@ -177,7 +177,7 @@ function ReplyComposer(props: ReplyComposerProps) {
 
             const provider = new ethers.providers.Web3Provider(window.ethereum as any)
             const chainId = state.ethereum.chainId
-            const net_config = getNetConfig(chainId)
+            const net_config = getNetConfig(productEthChainId)
 
             console.log("cmail contract address: " + net_config.contractAddress)
             console.log("chain id: " + chainId)
@@ -224,7 +224,7 @@ function ReplyComposer(props: ReplyComposerProps) {
     // Component functions
     //
 
-    async function onWithdrawPaymentClicked() {
+    async function onMakePaymentClicked() {
         try {
 
             const state = getRootState()
@@ -257,7 +257,7 @@ function ReplyComposer(props: ReplyComposerProps) {
             const provider = new ethers.providers.Web3Provider(window.ethereum as any)
             const chainId = state.ethereum.chainId
             const signer = provider.getSigner()
-            const net_config = getNetConfig(chainId)
+            const net_config = getNetConfig(productEthChainId)
             const contract = new ethers.Contract(net_config.contractAddress, cmailAbiJson, signer)
 
             console.log("cmail contract address: " + net_config.contractAddress)
@@ -272,9 +272,12 @@ function ReplyComposer(props: ReplyComposerProps) {
                 setTransactionStatus(EthTransactionStatus.submitted)
                 setTransactionHash(resp.hash)
 
+                // don't wait for transaction receipt
+                /*
                 const receipt: TransactionReceipt = await resp.wait(1)
                 console.log("tx receipt: " + receipt.transactionHash)
                 setTransactionStatus(EthTransactionStatus.confirmed)
+                 */
 
             } catch (err : any) {
                 if (err.code === 4001) {
@@ -508,7 +511,7 @@ function ReplyComposer(props: ReplyComposerProps) {
 	                               content='Execute a smart contract transaction using Metamask to receive the payment for replying to this message.'
 	                               trigger={
                                        <Button as='div' labelPosition='right' onClick={(_) =>
-                                           onWithdrawPaymentClicked()}>
+                                           onMakePaymentClicked()}>
                                            <Button color='orange'>
                                                Reply Payment
                                            </Button>

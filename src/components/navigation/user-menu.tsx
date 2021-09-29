@@ -19,6 +19,7 @@ import {useState} from 'react'
 
 import {Link, useHistory} from 'react-router-dom'
 import {Account} from '../../proto/types/accounts_pb'
+import {productEthChainId} from '../../features/ethereum/config'
 
 interface UserMenuProps {
     user: Account, // the thread this card displays with all messages and senders info authenticated and decrypted
@@ -35,9 +36,9 @@ function UserMenu(props: UserMenuProps) {
     }
 
     const unreadCount = useAppSelector((state) => state.messages.unread_count)
-    // const ethChainId = useAppSelector((state) => state.ethereum.chainId)
-    // const ethChainDisplayString = ethChainId === 1 ? "Mainnet" : "Testnet " + ethChainId
-    // const ethChainLabelColor = ethChainId === 1 ? 'blue' : 'orange'
+    const ethChainId = useAppSelector((state) => state.ethereum.chainId)
+    //const ethChainDisplayString = ethChainId === 1 ? "Mainnet" : "Testnet " + ethChainId
+    //const ethChainLabelColor = ethChainId === 1 ? 'blue' : 'orange'
     const [activeThreadbox, setActiveThreadbox] = useState('inbox')
     const [localUserName, setLocalUserName] = useState("")
     const [smallProfileImageUrl, setSmallProfileImageUrl] = useState("")
@@ -80,6 +81,10 @@ function UserMenu(props: UserMenuProps) {
     // metamask net indicator:
     //  { ethChainId > 0  && <Menu.Item><Label color={ethChainLabelColor}>{ethChainDisplayString}</Label></Menu.Item> }
 
+
+    function metaMaskChainIdMismatch() : boolean {
+        return ethChainId !== productEthChainId
+    }
 
     return (
         <Menu fixed='top' stackable fluid={true} primary="true" style={{opacity: '80%'}}>
@@ -127,7 +132,12 @@ function UserMenu(props: UserMenuProps) {
                 } />
                 </MenuMenu>
                 <MenuMenu position='right'>
-                    <Menu.Item><Label color='orange'>Kovan Testnet</Label></Menu.Item>
+                    <MenuItem>
+                        {metaMaskChainIdMismatch() && <Popup content='Please change your Metamask ethereum network to Kovan testnet.' trigger={
+                            <Icon color='red' name='warning sign'/>}/>
+                        }
+                        <Label color='orange'>Kovan Testnet</Label>
+                    </MenuItem>
                     <MenuItem>
                         <Image size='large' style={{height:'auto', borderRadius:'50%', whiteSpace:'nowrap', fontSize:'large', width:'32px'}} src={smallProfileImageUrl} circular/>
                         <Dropdown style={{marginLeft:'6px'}} header="true" text={localUserName} fluid={true} floating>

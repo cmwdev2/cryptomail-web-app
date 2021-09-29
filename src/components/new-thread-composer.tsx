@@ -39,7 +39,7 @@ import {u8aToHex} from '@polkadot/util'
 import MDEditor from '@uiw/react-md-editor'
 import detectEthereumProvider from '@metamask/detect-provider'
 import cmailAbiJson from '../features/ethereum/crypto_mail_abi.json'
-import getNetConfig, {EthTransactionStatus} from '../features/ethereum/config'
+import getNetConfig, {EthTransactionStatus, productEthChainId} from '../features/ethereum/config'
 import {getRootState} from '../app/store'
 import CryptoUtils from '../features/crypo/crypto'
 import {newThread, SendNewThreadParams} from '../features/messaging/new-thread'
@@ -363,7 +363,7 @@ function NewThreadComposer(props: NewThreadComposerProps) {
             const provider = new ethers.providers.Web3Provider(window.ethereum as any)
             const chainId = state.ethereum.chainId
             const signer = provider.getSigner()
-            const net_config = getNetConfig(chainId)
+            const net_config = getNetConfig(productEthChainId)
 
             console.log("cmail contract address: " + net_config.contractAddress)
             console.log("chain id: " + chainId)

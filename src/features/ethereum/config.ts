@@ -4,6 +4,9 @@ export interface EthNetConfig {
   contractAddress: string
 }
 
+// for now we only support 1 chain id per deployment
+export const productEthChainId = 42
+
 // return smart contract address for a network
 export default function getNetConfig(netId: number) : EthNetConfig {
   switch (netId) {

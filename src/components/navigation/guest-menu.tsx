@@ -4,6 +4,7 @@ import React from 'react'
 import {Icon, Label, Menu, MenuItem, MenuMenu, Popup} from 'semantic-ui-react'
 import {useAppSelector} from '../../app/hooks'
 import {Link} from 'react-router-dom'
+import {productEthChainId} from '../../features/ethereum/config'
 
 function GuestMenu() {
 
@@ -15,9 +16,13 @@ function GuestMenu() {
         // User can sign in only if has an enc seed in account state
         state.account.enc_seed !== null && state.account.name !== null)
 
-    // const ethChainId = useAppSelector((state) => state.ethereum.chainId)
+    const ethChainId = useAppSelector((state) => state.ethereum.chainId)
     // const ethChainDisplayString = ethChainId === 1 ? "Mainnet" : "Testnet " + ethChainId
     // const ethChainLabelColor = ethChainId === 1 ? 'blue' : 'orange'
+
+    function metaMaskChainIdMismatch() : boolean {
+        return ethChainId !== productEthChainId
+    }
 
     return (
         <Menu fixed='top' stackable primary="true" style={{opacity: '80%'}}>
@@ -28,7 +33,12 @@ function GuestMenu() {
                     <MenuItem as={Link} to='/users' name='users' style={{color:'blue'}} content="Who's here?"/>
                 } />
                 <MenuMenu position='right'>
-                    <Menu.Item><Label color='orange'>Kovan Testnet</Label></Menu.Item>
+                    <Menu.Item>
+                        {metaMaskChainIdMismatch() && <Popup content='Please change your Metamask ethereum network to Kovan testnet.' trigger={
+                            <Icon color='red' name='warning sign'/>}/>
+                        }
+                        <Label color='orange'>Kovan Testnet</Label>
+                    </Menu.Item>
                     { !canSignIn && <Menu.Item header link as='a' href="/signup">Sign Up
 	                    <Label style={{top:'1px', left:'69%', color:'white'}} size='tiny' color='red' floating>+100</Label>
                     </Menu.Item> }

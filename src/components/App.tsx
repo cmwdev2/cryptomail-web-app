@@ -155,7 +155,7 @@ function App() {
         }}>
             { localAccount !== null && <UserMenu user={localAccount}/>}
             { localAccount == null && <GuestMenu/>}
-            <Container fluid={true} style={{ paddingTop: '48px'}}>
+            <Container fluid={true} style={{ paddingTop: '40px'}}>
                 <ErrorMessage/>
                 {!cryptoLibReady &&
                     <Container fluid={true} textAlign='left'>

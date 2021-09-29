@@ -112,7 +112,7 @@ function ThreadboxScreen(props: ThreadboxProps) {
     }
 
     return (
-      <Container style={{ padding: '10px', opacity: '80%', textAlign:'left', width:'100%'}}>
+      <Container style={{marginTop:'14px', padding: '10px', opacity: '80%', textAlign:'left', width:'100%'}}>
           { openThread !== null &&
             <ThreadModal
                 replyToMessageAction={props.replyToMessageAction}
